@@ -1,6 +1,6 @@
 #Webserver Info
 output "websever_public_IP" {
-    value = aws_instance.webserver.public_ip
+    value = aws_instance.webserver01.public_ip
 }
 
 #RDS info
