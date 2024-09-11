@@ -40,7 +40,9 @@ outputs.tf - Displays necessary info like ec2 _public_ip
 # NOTE: AS PER THE AMI PROVIDED IN TEST DOES NOT SUPPORT "t2.micro" hence using m5.large  #
 #        SAME FOR THE RDS INSTANCE, USING "db.t3.micro"                                   #
 ###########################################################################################
-###################################################### OUTPUT ##################################################################################################################################
+############################################################################################################################## 
+#                                                         OUTPUT                                                             #
+###############################################################################################################################
   ***terraform init:***
 
     rubhanrv@RRubhanV:/mnt/c/Users/Tony/Desktop/terraform_challenge/terraform_challenge$ cd terraform_challenge/
