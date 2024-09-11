@@ -83,9 +83,3 @@ resource "aws_db_instance" "webserver_db01" {
     skip_final_snapshot  = true
 }
   
-    password             = var.rds_password
-    parameter_group_name = "default.mysql8.0"
-    vpc_security_group_ids = [aws_security_group.rds_sg.id]
-    skip_final_snapshot  = true
-}
-  
