@@ -12,11 +12,14 @@ variable "ami" {
 
 variable "ec2_instance_type" {
   description = "The instace used is t2.micro"
- default = "t2.micro"
+ default = "m5.large"
 }
 
 
 #Variables for RDS
+variable "rds_instance_type" {
+  default = "db.t3.micro"
+}
 variable "rds_username" {
   default = "admin"
 }
