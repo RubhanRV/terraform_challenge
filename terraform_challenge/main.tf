@@ -12,14 +12,14 @@ resource "aws_security_group" "webserver_SG" {
     ingress {
         from_port = 80
         to_port = 80
-        protocol = "http"
+        protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }
 
     ingress {
         from_port = 22
         to_port = 22
-        protocol = "ssh"
+        protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
     }       
 
@@ -35,7 +35,7 @@ resource "aws_security_group" "webserver_SG" {
 
 #EC2 Instance with httpd server
 
-resource "aws_instance" "webserver" {
+resource "aws_instance" "webserver01" {
         ami = var.ami
         instance_type = var.ec2_instance_type
         vpc_security_group_ids = [aws_security_group.webserver_SG.id]
@@ -75,8 +75,14 @@ resource "aws_db_instance" "webserver_db01" {
     db_name              = "mydb"
     engine               = "mysql"
     engine_version       = "8.0"
-    instance_class       = "db.t2.micro"
+    instance_class       = var.rds_instance_type
     username             = var.rds_username
+    password             = var.rds_password
+    parameter_group_name = "default.mysql8.0"
+    vpc_security_group_ids = [aws_security_group.rds_sg.id]
+    skip_final_snapshot  = true
+}
+  
     password             = var.rds_password
     parameter_group_name = "default.mysql8.0"
     vpc_security_group_ids = [aws_security_group.rds_sg.id]
